@@ -37,12 +37,11 @@ I'm learning AI Engineering through structured tutorials, hands-on coding, and r
 
 ### Phase 1 – Python & LLM Fundamentals
 
-- [x] Python environment setup
-- [x] Virtual environment creation
-- [ ] Environment variables and API key management
-- [ ] First LLM integration using Groq API
-- [ ] Chat completion API
-- [ ] Understanding system, user, and assistant roles
+- [x] Environment variables and API key management
+- [x] First LLM integration using Groq API
+- [x] Chat completion API
+- [x] Understanding system, user, and assistant roles
+- [x] Temperature and response generation
 - [ ] Conversation history and memory
 - [ ] Streaming responses
 - [ ] Prompt engineering
@@ -96,11 +95,12 @@ ai-engineering/
 ├── week1/
 │   ├── day1/
 │   │   ├── hello_llm.py
-│   │   ├── README.md
-│   │   ├── pyproject.toml
-│   │   └── uv.lock
+│   │   └── README.md
 │   │
 │   ├── day2/
+│   │   ├── sys_temp.py
+│   │   └── README.md
+│   │
 │   └── day3/
 │
 ├── .env.example
