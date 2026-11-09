@@ -155,14 +155,6 @@ Never commit your actual API keys or `.env` file to GitHub.
 python week1/day1/hello_llm.py
 ```
 
-## 📅 Daily Learning Progress
-
-| Week   | Day   | Topic                               | Status    |
-| ------ | ----- | ----------------------------------- | --------- |
-| Week 1 | Day 1 | First LLM Application with Groq API | Completed |
-| Week 1 | Day 2 | Coming Soon                         | Pending   |
-| Week 1 | Day 3 | Coming Soon                         | Pending   |
-
 ## 📖 Learning Resources
 
 - [YouTube – AI Engineering Learning Playlist](https://www.youtube.com/watch?v=ahaLgJr3HcU\&list=PLW4OpyGE0RdY)
