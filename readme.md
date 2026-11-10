@@ -175,7 +175,7 @@ ai-engineering/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/SumnRanjan/ai-engineering.git
+git clone https://github.com/SumnRanjan/ai_engineer.git
 cd ai-engineering
 ```
 
