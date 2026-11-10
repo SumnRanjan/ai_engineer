@@ -1,4 +1,5 @@
 import os
+import json
 from pathlib import Path
 from dotenv import load_dotenv # type: ignore
 from groq import Groq # type: ignore
@@ -54,23 +55,12 @@ answer=response.choices[0].message.content
 # print(answer)
 
 
-# isko padhte kaise hai
-import json
+# how to read json file
 raw_json=answer
 data_file=json.loads(raw_json)
 ticket=Ticket(**data_file)
 
-
-# inko pass kr sakte hai aage!
 print(ticket.name)
 print(ticket.email)
 print(ticket.issue)
 
-
-#Homework
-
-# take resume in pdf or word
-# have hr give you a list of things like skill, experience, projects
-# extract these from resume 
-# match against the hr list
-# generate a percentage of matching or not

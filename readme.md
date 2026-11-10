@@ -2,8 +2,6 @@
 
 Welcome to my **AI Engineering Learning Journey**! This repository documents my progress as I learn AI Engineering through hands-on practice, concepts, experiments, and real-world projects.
 
-I'm following the **AI Engineer in 8 Weeks** course by [Padho with Pratyush](https://www.youtube.com/watch?v=ahaLgJr3HcU&list=PLW4OpyGE0RdY), while building practical applications and documenting what I learn along the way.
-
 My goal is to understand how modern AI applications work and become capable of building, deploying, and evaluating production-ready AI systems.
 
 ---
