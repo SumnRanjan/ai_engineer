@@ -182,7 +182,7 @@ cd ai-engineering
 ### 2. Create a virtual environment
 
 ```bash
-python -m venv .venv
+ uv venv --python 3.14       
 ```
 
 Activate it on Windows PowerShell:
