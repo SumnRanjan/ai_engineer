@@ -1,230 +1,219 @@
-# Understanding RAG (Retrieval-Augmented Generation)
+# Understanding Text Embeddings & Cosine Similarity
 
-A beginner-friendly Python project to understand the fundamental concept of **Retrieval-Augmented Generation (RAG)** using Groq API and an LLM.
+A beginner-friendly Python project to understand how text is converted into numerical vectors (embeddings) and how semantic similarity between two sentences can be measured using cosine similarity.
 
-This project demonstrates how an LLM can answer questions using external information (a knowledge base) instead of relying entirely on its pre-trained knowledge.
+This project uses **Sentence Transformers, NumPy, and the all-MiniLM-L6-v2 embedding model**.
 
-## 1. What is RAG?
+## 1. What are Text Embeddings?
 
-**RAG stands for Retrieval-Augmented Generation.**
+Text embeddings are numerical representations of text (words, sentences, or paragraphs) in the form of vectors.
 
-It is a technique in which an application retrieves relevant information from an external knowledge source and provides that information to an LLM as context to generate an answer.
-
-In simple terms:
-
-- **Retrieval:** Find relevant information from a knowledge base.
-- **Augmentation:** Add the retrieved information to the LLM prompt as context.
-- **Generation:** The LLM uses the provided context to generate an answer.
-
-## 2. Project Overview
-
-In this project, we create a small knowledge base containing information about Batman.
-
-```python
-knowledge_base = {
-    "age": "Batman is 35 years old",
-    "net worth": "Batman has a net worth of 9.2 billion dollars"
-}
-```
-
-The user asks questions, and the application retrieves relevant information from the knowledge base before sending the question and context to the LLM.
-
-## 3. How Does It Work?
-
-The application follows three main steps:
-
-### Step 1: Create a Knowledge Base
-
-We create a Python dictionary that stores external information.
-
-```python
-knowledge_base = {
-    "age": "Batman is 35 years old",
-    "net worth": "Batman has a net worth of 9.2 billion dollars"
-}
-```
-
-This acts as our external knowledge source.
-
-### Step 2: Retrieve Relevant Information
-
-We create a `retrieve_info()` function that searches the knowledge base based on the user's question.
-
-```python
-def retrieve_info(question):
-    question = question.lower()
-
-    if "age" in question:
-        return knowledge_base["age"]
-
-    elif "net worth" in question:
-        return knowledge_base["net worth"]
-
-    else:
-        return "Information not found."
-```
+An embedding model converts human-readable text into a list of numbers that captures its semantic meaning.
 
 For example:
 
-| User Question | Retrieved Context |
-|---|---|
-| Who is Batman's age? | Batman is 35 years old |
-| What is Batman's net worth? | Batman has a net worth of 9.2 billion dollars |
-| Is he rich? | Information not found |
+```text
+Input:
+"Machine learning is fun."
 
-**Important:** This project uses simple keyword-based retrieval, not semantic search or vector embeddings.
+Output:
+[0.21, -0.45, 0.67, 0.12, ...]
+```
 
-### Step 3: Augment the Prompt and Generate an Answer
+These numerical vectors help machines understand semantic relationships between different pieces of text.
 
-After retrieving the relevant information, we pass it to the LLM through a system prompt.
+## 2. What is Sentence Transformer?
+
+Sentence Transformers is a Python library used to generate embeddings for sentences and paragraphs.
+
+In this project, we use:
 
 ```python
-context = retrieve_info(question)
-
-system_prompt = f"""
-Answer in one sentence.
-Answer based on context.
-Do not hallucinate.
-
-Context: {context}
-"""
+model = SentenceTransformer(
+    "sentence-transformers/all-MiniLM-L6-v2"
+)
 ```
 
-We send two messages to the LLM:
+### Understanding all-MiniLM-L6-v2
 
-- **System message:** Defines the instructions and provides retrieved context.
-- **User message:** Contains the original user question.
+- **MiniLM:** A compact language model.
+- **L6:** Contains 6 Transformer layers.
+- **384:** Generates embeddings with 384 dimensions.
+- **v2:** Second version of this model.
 
-The LLM generates an answer using the provided context.
+This model converts a sentence into a vector containing 384 numerical values.
 
-## 4. Project Architecture
+## 3. Generating Text Embeddings
 
-```text
-User Question
-     |
-     v
-retrieve_info()
-     |
-     v
-Knowledge Base
-     |
-     v
-Relevant Context
-     |
-     v
-System Prompt + User Question
-     |
-     v
-Groq API
-     |
-     v
-LLM (GPT-OSS-120B)
-     |
-     v
-Generated Answer
-```
-
-## 5. Understanding the Role of Each Component
-
-| Component | Responsibility |
-|---|---|
-| Knowledge Base | Stores external information |
-| Retrieval Function | Finds relevant information |
-| Context | Provides retrieved information to the LLM |
-| System Prompt | Defines how the LLM should behave |
-| User Prompt | Contains the user's actual question |
-| Groq API | Provides access to the language model |
-| LLM | Generates the final response |
-
-## 6. Example Execution
-
-**Input:**
+We use the `encode()` method to convert text into embeddings.
 
 ```python
-print(ask_llm("who is batman age ?"))
-print(ask_llm("what is batman net worth ?"))
-print(ask_llm("is he rich ?"))
+text = "Machine learning is fun."
+
+embedding = model.encode(text)
+
+print(f"Embedding shape: {embedding.shape}")
+print(f"Embedding: {embedding[:10]}")
 ```
 
-**Expected responses (illustrative):**
+### Explanation
+
+- `model.encode(text)` converts text into a numerical vector.
+- `embedding.shape` returns the dimensions of the vector.
+- `embedding[:10]` displays the first 10 values.
+
+Expected shape:
 
 ```text
-Batman is 35 years old.
-
-Batman has a net worth of 9.2 billion dollars.
-
-Information not found.
+(384,)
 ```
 
-The actual response may vary depending on the LLM.
+This means one sentence is represented by 384 numerical values.
 
-## 7. Important Concepts Learned
+## 4. What is Cosine Similarity?
 
-### What is Context?
+Cosine similarity is a mathematical technique used to measure how similar two vectors are by calculating the cosine of the angle between them.
 
-Context is the relevant information provided to the LLM so it can generate an answer based on specific external data.
+In NLP and RAG, it is commonly used to measure the semantic similarity between text embeddings.
 
-### What is Retrieval?
+### Formula
 
-Retrieval is the process of finding relevant information from an external knowledge source based on a user's query.
+```text
+                 A . B
+Cosine Similarity = ----------------
+                    ||A|| * ||B||
+```
 
-### What is Augmentation?
+Where:
 
-Augmentation means adding the retrieved information to the LLM's input prompt.
+- A = First embedding vector.
+- B = Second embedding vector.
+- A . B = Dot product of both vectors.
+- ||A|| = Magnitude (norm) of vector A.
+- ||B|| = Magnitude (norm) of vector B.
 
-### What is Hallucination?
+### Understanding the Similarity Score
 
-Hallucination occurs when an LLM generates incorrect or unsupported information.
-
-In this project, we instruct the LLM to answer only using the retrieved context to reduce hallucinations.
-
-However, a prompt instruction alone cannot guarantee that hallucinations will never occur.
-
-## 8. Is This a Complete RAG System?
-
-This is a **basic RAG learning implementation**.
-
-It demonstrates the core RAG workflow but does not implement advanced retrieval techniques.
-
-| Basic Implementation | Advanced RAG |
+| Score | Interpretation |
 |---|---|
-| Python dictionary | Document-based knowledge base |
-| Keyword matching | Semantic search |
-| No embeddings | Embedding models |
-| No vector database | ChromaDB, FAISS, Pinecone |
-| Simple context injection | Context ranking and optimization |
-| Groq LLM | Groq or other LLM providers |
+| Close to 1 | Highly similar direction |
+| Close to 0 | Little directional similarity |
+| Close to -1 | Opposite direction |
 
-## 9. What I Plan to Learn Next
+For typical semantic embedding models, scores are often positive, but the exact interpretation depends on the model and dataset.
 
-- Document loading (PDF, TXT, DOCX)
-- Text chunking and chunk overlap
-- Text embeddings
-- Vector databases
-- Cosine similarity
-- Semantic search
-- Retrieval optimization
-- Building a complete RAG pipeline
+## 5. Implementing Cosine Similarity Using NumPy
 
-## 10. Technologies Used
+```python
+import numpy as np
+
+def cosine_similarity(a, b):
+    return np.dot(a, b) / (
+        np.linalg.norm(a) * np.linalg.norm(b)
+    )
+```
+
+### Explanation of NumPy Functions
+
+**1. np.dot(a, b)**
+
+Calculates the dot product of two vectors.
+
+**2. np.linalg.norm(a)**
+
+Calculates the magnitude (length) of vector A.
+
+**3. np.linalg.norm(b)**
+
+Calculates the magnitude (length) of vector B.
+
+Finally, we divide the dot product by the product of both vector magnitudes.
+
+## 6. Comparing Two Sentences
+
+In this project, we compare two different text inputs.
+
+```python
+t1 = "there are 24 paid leaves"
+t2 = "cat"
+
+v1 = model.encode(t1)
+v2 = model.encode(t2)
+
+print(
+    f"Cosine similarity: {cosine_similarity(v1, v2)}"
+)
+```
+
+### What happens internally?
+
+1. The first sentence is passed to the embedding model.
+2. The second sentence is passed to the embedding model.
+3. Both sentences are converted into 384-dimensional vectors.
+4. Cosine similarity calculates the similarity between the two vectors.
+5. The result is a numerical similarity score.
+
+Since the sentences discuss unrelated topics, we generally expect a lower semantic similarity score.
+
+## 7. Project Workflow
+
+```text
+Text 1: "There are 24 paid leaves"
+                  |
+                  v
+          Sentence Transformer
+                  |
+                  v
+          Embedding Vector 1
+                  |
+                  |
+                  |       Text 2: "cat"
+                  |              |
+                  |              v
+                  |      Sentence Transformer
+                  |              |
+                  |              v
+                  |      Embedding Vector 2
+                  |              |
+                  +--------------+
+                         |
+                         v
+                Cosine Similarity
+                         |
+                         v
+                 Similarity Score
+```
+
+## 8. Why are Embeddings Important in RAG?
+
+Embeddings play an important role in Retrieval-Augmented Generation (RAG).
+
+Imagine a knowledge base containing thousands of documents.
+
+When a user asks a question:
+
+1. The user's question is converted into an embedding.
+2. The system compares the query embedding with stored document embeddings.
+3. Cosine similarity or another similarity metric helps find relevant documents.
+4. The most relevant information is retrieved.
+5. The retrieved information is passed to an LLM as context.
+6. The LLM generates the final answer.
+
+This allows RAG applications to perform semantic search instead of relying only on exact keyword matching.
+
+## 9. Technologies Used
 
 - Python
-- Groq API
-- GPT-OSS-120B
-- python-dotenv
+- NumPy
+- Sentence Transformers
+- all-MiniLM-L6-v2
 
-## 11. Environment Setup
+## 10. Installation
 
 Install the required dependencies:
 
 ```bash
-pip install groq python-dotenv
-```
-
-Create a `.env` file:
-
-```env
-GROQ_API_KEY=your_groq_api_key
+pip install numpy sentence-transformers
 ```
 
 Run the application:
@@ -233,4 +222,28 @@ Run the application:
 python embedded_rag.py
 ```
 
-**Learning Objective:** Understand how external knowledge can be retrieved, injected into an LLM prompt, and used to generate context-aware responses. This project is the first step toward building a complete RAG application.
+The first execution downloads the embedding model, so an internet connection is required.
+
+## 11. Key Learnings
+
+Through this project, I learned:
+
+- What text embeddings are.
+- How text is converted into numerical vectors.
+- What Sentence Transformers are.
+- How the all-MiniLM-L6-v2 model works.
+- Why embeddings have 384 dimensions.
+- What cosine similarity is.
+- How NumPy calculates dot products and vector magnitudes.
+- How semantic similarity helps retrieve relevant information in RAG.
+
+## 12. Next Learning Steps
+
+- Compare multiple sentences using embeddings.
+- Understand semantic search.
+- Learn vector databases such as ChromaDB and FAISS.
+- Store and retrieve embeddings.
+- Implement similarity-based document retrieval.
+- Build a complete RAG application.
+
+**Learning Objective:** Understand how machines represent human language numerically and how vector similarity helps identify semantically related text. This is a foundational concept for building semantic search engines and RAG-based AI applications.
