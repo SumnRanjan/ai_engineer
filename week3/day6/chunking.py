@@ -61,8 +61,6 @@ for i, chunk in enumerate(paragraph.split_text(text), 1):
 recursive = RecursiveCharacterTextSplitter(
     chunk_size=150,
     chunk_overlap=30,
-    separators=["\n\n", "\n", " ", ""],
-    length_function=len
 )
 
 print("\n========== RECURSIVE CHUNKING ==========")
