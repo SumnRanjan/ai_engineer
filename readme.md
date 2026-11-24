@@ -17,8 +17,8 @@ My goal is to understand how modern AI applications work and become capable of b
 | AI Agent Evaluation | ✅ Completed |
 | MCP (Model Context Protocol) | ✅ Completed |
 | Coding Agent | ✅ Completed |
-| Evaluation, Observability & Guardrails | 🔄 In Progress |
-| Deployment & Production | ⏳ Upcoming |
+| Evaluation, Observability & Guardrails | ✅ Completed |
+| Deployment & Production | ✅ Completed |
 
 ---
 
@@ -61,7 +61,7 @@ My goal is to understand how modern AI applications work and become capable of b
 
 This roadmap follows the topics covered in the AI Engineering playlist.
 
-### Week 1 – LLM Fundamentals and Prompt Engineering
+### LLM Fundamentals and Prompt Engineering
 
 - [x] Introduction to AI Engineering
 - [x] Python environment and project setup
@@ -77,7 +77,7 @@ This roadmap follows the topics covered in the AI Engineering playlist.
 - [x] Streaming responses
 - [x] Personal Portfolio AI mini project
 
-### Week 2 – RAG and Vector Databases
+### RAG and Vector Databases
 
 - [x] Introduction to RAG (Retrieval-Augmented Generation)
 - [x] Understanding Embeddings
@@ -88,7 +88,7 @@ This roadmap follows the topics covered in the AI Engineering playlist.
 - [x] Chunking strategies for RAG
 - [x] RAG Evaluation
 
-### Week 3 – AI Agents and LangGraph
+### AI Agents and LangGraph
 
 - [x] Understanding why LLMs struggle with basic mathematics
 - [x] Build your first AI Agent
@@ -100,23 +100,23 @@ This roadmap follows the topics covered in the AI Engineering playlist.
 - [x] Build a Multi-Agent AI System (supervisor + workers)
 - [x] AI Agent Evaluation
 
-### Week 4 – MCP and Advanced AI Engineering
+### MCP and Advanced AI Engineering
 
 - [x] Understanding Model Context Protocol (MCP)
 - [x] Build an MCP Server
 - [x] Connect an MCP Server to Claude
 - [x] Design a Coding Agent
 - [x] Build a Coding Agent
-- [ ] AI Engineering interview preparation
-- [ ] AI concepts revision
-- [ ] Evaluation, Observability, and Guardrails
+- [x] AI Engineering interview preparation
+- [x] AI concepts revision
+- [x] Evaluation, Observability, and Guardrails
 
-### Week 5 – Deployment and Production
+### Deployment and Production
 
-- [ ] Understanding AI application deployment
-- [ ] Deploy an AI application
-- [ ] Review production considerations
-- [ ] Build and refine end-to-end AI projects
+- [x] Understanding AI application deployment
+- [x] Deploy an AI application
+- [x] Review production considerations
+- [x] Build and refine end-to-end AI projects
 
 ---
 
@@ -133,7 +133,7 @@ This roadmap follows the topics covered in the AI Engineering playlist.
 | Multi-Agent System | Multiple LLM agents (supervisor + workers) collaborating | Python, LangGraph | `week5/multiagent/` | ✅ |
 | MCP Server + Client | Order-lookup MCP server exposing tools, resources and prompts, with a Python client | Python, MCP | `week5/mcp/` | ✅ |
 | Mini Coding Agent | LLM + tools agent that finds and fixes C++ bugs, verifies with g++, retries and rolls back on failure | Python, Groq, Tool Calling | `week5/coding_agent/` | ✅ |
-| Deployed AI App | Deploy an end-to-end AI application | Python, Deployment | – | ⏳ |
+| Deployed AI App | Deploy an end-to-end AI application | Python, Deployment | – | ✅ |
 
 ---
 
