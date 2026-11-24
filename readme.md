@@ -6,6 +6,22 @@ My goal is to understand how modern AI applications work and become capable of b
 
 ---
 
+## 📊 Progress at a Glance
+
+| Area | Status |
+|---|---|
+| LLM Fundamentals & Prompt Engineering | ✅ Completed |
+| RAG & Vector Databases | ✅ Completed |
+| AI Agents & LangGraph | ✅ Completed |
+| Multi-Agent Systems | ✅ Completed |
+| AI Agent Evaluation | ✅ Completed |
+| MCP (Model Context Protocol) | ✅ Completed |
+| Coding Agent | ✅ Completed |
+| Evaluation, Observability & Guardrails | 🔄 In Progress |
+| Deployment & Production | ⏳ Upcoming |
+
+---
+
 ## 🎯 Learning Goals
 
 - Understand Large Language Models (LLMs) and how they work.
@@ -23,23 +39,21 @@ My goal is to understand how modern AI applications work and become capable of b
 
 ## 🛠️ Technology Stack
 
-The following tools and technologies are part of my learning roadmap.
-
 | Category | Technologies |
 |---|---|
 | Programming Language | Python |
-| LLM APIs | Groq, OpenAI-compatible APIs |
-| LLM Concepts | Tokens, Context Windows, Embeddings |
+| LLM APIs | Groq (`openai/gpt-oss-120b`), OpenAI-compatible APIs |
+| LLM Concepts | Tokens, Context Windows, Embeddings, Tool Calling |
 | Data Validation | Pydantic, JSON |
-| Prompt Engineering | Prompt Design, Prompt Chaining |
+| Prompt Engineering | Prompt Design, Prompt Chaining, ReAct |
 | AI Frameworks | LangChain, LangGraph |
 | Vector Databases | Qdrant |
 | AI Architecture | RAG, AI Agents, Multi-Agent Systems |
-| Tool Integration | MCP |
-| Development Tools | VS Code, Git, GitHub |
+| Tool Integration | MCP (Python SDK 2.x) |
+| Evaluation | Golden datasets, Output & Trajectory evaluation |
+| Code Verification | g++ (compile + run inside the coding agent) |
+| Development Tools | VS Code, Git, GitHub, uv |
 | Deployment | Python application deployment |
-
-*Technologies will be explored and added as I progress through the course.*
 
 ---
 
@@ -49,50 +63,50 @@ This roadmap follows the topics covered in the AI Engineering playlist.
 
 ### Week 1 – LLM Fundamentals and Prompt Engineering
 
-- [ ] Introduction to AI Engineering
-- [ ] Python environment and project setup
-- [ ] Understanding your first LLM API call
-- [ ] System, User, and Assistant roles
-- [ ] Temperature and response generation
-- [ ] Tokens and tokenization
-- [ ] Pydantic and structured JSON responses
-- [ ] First AI mini project
-- [ ] Prompt Engineering
-- [ ] Introduction to ReAct and AI Agents
-- [ ] Prompt Chaining
-- [ ] Streaming responses
-- [ ] Personal Portfolio AI mini project
+- [x] Introduction to AI Engineering
+- [x] Python environment and project setup
+- [x] Understanding your first LLM API call
+- [x] System, User, and Assistant roles
+- [x] Temperature and response generation
+- [x] Tokens and tokenization
+- [x] Pydantic and structured JSON responses
+- [x] First AI mini project
+- [x] Prompt Engineering
+- [x] Introduction to ReAct and AI Agents
+- [x] Prompt Chaining
+- [x] Streaming responses
+- [x] Personal Portfolio AI mini project
 
 ### Week 2 – RAG and Vector Databases
 
-- [ ] Introduction to RAG (Retrieval-Augmented Generation)
-- [ ] Understanding Embeddings
-- [ ] Build your first RAG system
-- [ ] Introduction to Qdrant Vector Database
-- [ ] Multi-Tenant RAG with Qdrant
-- [ ] Convert a DSA playlist into a RAG application
-- [ ] Chunking strategies for RAG
-- [ ] RAG Evaluation
+- [x] Introduction to RAG (Retrieval-Augmented Generation)
+- [x] Understanding Embeddings
+- [x] Build your first RAG system
+- [x] Introduction to Qdrant Vector Database
+- [x] Multi-Tenant RAG with Qdrant
+- [x] Convert a DSA playlist into a RAG application
+- [x] Chunking strategies for RAG
+- [x] RAG Evaluation
 
 ### Week 3 – AI Agents and LangGraph
 
-- [ ] Understanding why LLMs struggle with basic mathematics
-- [ ] Build your first AI Agent
-- [ ] Introduction to LangGraph
-- [ ] LangGraph implementation
-- [ ] Design a Restaurant AI Agent
-- [ ] Build an AI Agent using LangGraph
-- [ ] Introduction to Multi-Agent Systems
-- [ ] Build a Multi-Agent AI System
-- [ ] AI Agent Evaluation
+- [x] Understanding why LLMs struggle with basic mathematics
+- [x] Build your first AI Agent
+- [x] Introduction to LangGraph
+- [x] LangGraph implementation (State, Nodes, Edges)
+- [x] Design a Restaurant AI Agent
+- [x] Build an AI Agent using LangGraph
+- [x] Introduction to Multi-Agent Systems
+- [x] Build a Multi-Agent AI System (supervisor + workers)
+- [x] AI Agent Evaluation
 
 ### Week 4 – MCP and Advanced AI Engineering
 
-- [ ] Understanding Model Context Protocol (MCP)
-- [ ] Build an MCP Server
-- [ ] Connect an MCP Server to Claude
-- [ ] Design a Coding Agent
-- [ ] Build a Coding Agent
+- [x] Understanding Model Context Protocol (MCP)
+- [x] Build an MCP Server
+- [x] Connect an MCP Server to Claude
+- [x] Design a Coding Agent
+- [x] Build a Coding Agent
 - [ ] AI Engineering interview preparation
 - [ ] AI concepts revision
 - [ ] Evaluation, Observability, and Guardrails
@@ -106,67 +120,71 @@ This roadmap follows the topics covered in the AI Engineering playlist.
 
 ---
 
-## 🏗️ Projects Roadmap
+## 🏗️ Projects
 
-These are the practical projects I plan to build during this learning journey.
+| Project | Description | Technologies | Folder | Status |
+|---|---|---|---|---|
+| First LLM Application | Make an LLM API call from Python | Python, Groq | `week1/` | ✅ |
+| AI Mini Project | Build an application using LLMs | Python, LLM API | `week1/` | ✅ |
+| Personal Portfolio AI | AI chat assistant on my portfolio that answers recruiter questions about my skills | Python, LLM API | `week2/ai-portfolio/` | ✅ |
+| RAG Application | Question-answering system over documents | Python, Embeddings, Qdrant | `week2/` | ✅ |
+| DSA Playlist RAG | Search and ask questions about DSA learning content | RAG, Qdrant | `week2/` | ✅ |
+| LangGraph Basics | Doubling graph with state, nodes, edges and conditional edges | LangGraph | `week3/` | ✅ |
+| Restaurant AI Agent | LLM handles each step: take order, confirm, cook, serve | LangGraph | `week4/restraunt-ai-agent/` | ✅ |
+| Multi-Agent System | Multiple LLM agents (supervisor + workers) collaborating | Python, LangGraph | `week5/multiagent/` | ✅ |
+| MCP Server + Client | Order-lookup MCP server exposing tools, resources and prompts, with a Python client | Python, MCP | `week5/mcp/` | ✅ |
+| Mini Coding Agent | LLM + tools agent that finds and fixes C++ bugs, verifies with g++, retries and rolls back on failure | Python, Groq, Tool Calling | `week5/coding_agent/` | ✅ |
+| Deployed AI App | Deploy an end-to-end AI application | Python, Deployment | – | ⏳ |
 
-| Project | Description | Technologies |
-|---|---|---|
-| First LLM Application | Make an LLM API call from Python | Python, Groq |
-| AI Mini Project | Build an application using LLMs | Python, LLM API |
-| Personal Portfolio AI | Create an AI-powered portfolio | Python, LLM API |
-| RAG Application | Build a question-answering system over documents | Python, Embeddings, Qdrant |
-| DSA Playlist RAG | Search and ask questions about DSA learning content | RAG, Qdrant |
-| Restaurant AI Agent | Build an AI agent for restaurant-related tasks | LangGraph |
-| Multi-Agent System | Build a system with multiple collaborating agents | Python, LangGraph |
-| Coding Agent | Develop an AI-powered coding assistant | Python, AI Agents, MCP |
+---
+
+## 🔍 Project Highlights
+
+### 🤖 Mini Coding Agent (`week5/coding_agent/`)
+- Describe a bug in plain English; the agent finds the file, reads the code and edits the line using **3 tools**: `search_files`, `search_in_file`, `replace_line`.
+- Verifies each fix by **compiling and running** the code with g++.
+- Feeds compiler errors and user feedback back to the LLM, with up to **3 attempts**, and **restores files** if it fails.
+- Guardrails: step limits, workspace-only file access, run timeout.
+
+### 🔌 MCP Server (`week5/mcp/`)
+- MCP server exposing all three primitives: **Tools** (`add`, `get_order_status`), **Resource** (`orders://{id}`), **Prompt** (`summarize_order`).
+- Python client that connects over stdio, discovers capabilities and calls them.
+
+### 🧑‍🤝‍🧑 Multi-Agent System (`week5/multiagent/`)
+- Supervisor agent routes tasks to specialised worker agents in LangGraph.
 
 ---
 
 ## 📂 Repository Structure
 
-The repository will be organized by weeks, days, concepts, and projects as I progress.
-
 ```text
-ai-engineering/
+ai_engineer/
 │
-├── week1/
-│   ├── day1/
-│   │   ├── hello_llm.py
-│   │   └── README.md
-│   │
-│   ├── day2/
-│   │   ├── main.py
-│   │   └── README.md
-│   │
-│   └── ...
+├── week1/                   # LLM fundamentals & prompt engineering
+│   ├── day1/ … day5/
 │
-├── week2/
-│   ├── rag/
-│   ├── embeddings/
-│   └── qdrant/
+├── week2/                   # RAG, embeddings, Qdrant
+│   ├── ai-portfolio/
+│   ├── day1/ … day4/
 │
-├── week3/
+├── week3/                   # AI agents & LangGraph
+│   ├── day1/ … day6/
+│
+├── week4/                   # Agents & restaurant agent
 │   ├── agents/
-│   ├── langgraph/
-│   └── multi-agent/
+│   ├── day1/
+│   ├── day2/
+│   └── restraunt-ai-agent/
 │
-├── week4/
+├── week5/                   # Multi-agent, MCP, coding agent
+│   ├── coding_agent/
 │   ├── mcp/
-│   ├── coding-agent/
-│   └── evaluation/
+│   └── multiagent/
 │
-├── week5/
-│   └── deployment/
-│
-├── projects/
-│
-├── .env.example
+├── .env                     # local only, never committed
 ├── .gitignore
 └── README.md
 ```
-
-*The actual structure may evolve as new concepts and projects are introduced.*
 
 ---
 
@@ -176,16 +194,16 @@ ai-engineering/
 
 ```bash
 git clone https://github.com/SumnRanjan/ai_engineer.git
-cd ai-engineering
+cd ai_engineer
 ```
 
-### 2. Create a virtual environment
+### 2. Create and activate a virtual environment
 
 ```bash
- uv venv --python 3.14       
+uv venv --python 3.14
 ```
 
-Activate it on Windows PowerShell:
+Windows PowerShell:
 
 ```powershell
 .venv\Scripts\Activate.ps1
@@ -194,26 +212,50 @@ Activate it on Windows PowerShell:
 ### 3. Install dependencies
 
 ```bash
-pip install groq python-dotenv
+uv pip install groq python-dotenv
 ```
 
-Additional dependencies will be installed as required by individual projects.
+> Use `uv pip install` (not plain `pip`) inside a uv venv. A uv venv has no pip of its own, so plain `pip` installs into the system Python instead.
+
+Project-specific dependencies (e.g. `langgraph`, `qdrant-client`, `"mcp[cli]"`) are installed per project.
 
 ### 4. Configure environment variables
 
-Create a `.env` file:
+Create a `.env` file in the repo root:
 
 ```env
 GROQ_API_KEY=your_groq_api_key_here
 ```
 
-Never commit your actual `.env` file or API keys to GitHub.
+Make sure `.env` is listed in `.gitignore`. Never commit API keys.
 
-### 5. Run a Python application
+### 5. Run a project
 
 ```bash
-python main.py
+cd week5/coding_agent
+uv run main.py
 ```
+
+---
+
+## 🧠 Key Learnings
+
+- **Agents = LLM + tools + loop.** The LLM picks a tool, code runs it, and the result goes back to the LLM until it's done.
+- **Tool descriptions matter.** The LLM chooses tools purely from their name, description and parameter schema.
+- **Evaluate both output and trajectory.** A correct answer can hide a bad process.
+- **MCP turns M×N integrations into M+N.** Build a tool server once, use it from any MCP client.
+- **Agentic search vs RAG.** Keyword tools work well for small codebases; semantic (vector) search helps when the query wording doesn't match the code.
+- **Environment feedback improves agents.** Compiler errors and test output make the agent self-correct.
+
+---
+
+## 🔮 Next Steps
+
+- Connect the MCP server to Claude Desktop.
+- Add a `run_tests` tool and a semantic-search (RAG) tool to the coding agent.
+- Build a golden dataset and evaluate the coding agent (fix rate, tokens per bug).
+- Add observability (tracing) and guardrails.
+- Deploy an end-to-end AI application.
 
 ---
 
@@ -227,14 +269,13 @@ python main.py
 - **LangGraph Documentation:** https://docs.langchain.com/oss/python/langgraph/overview
 - **Qdrant Documentation:** https://qdrant.tech/documentation/
 - **Pydantic Documentation:** https://docs.pydantic.dev/
+- **MCP Documentation:** https://modelcontextprotocol.io/
 
 ---
 
 ## 💡 My Learning Approach
 
 I believe in learning by building rather than only watching tutorials.
-
-My approach:
 
 1. Understand the concept.
 2. Implement it using Python.
