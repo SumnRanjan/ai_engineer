@@ -128,7 +128,6 @@ This roadmap follows the topics covered in the AI Engineering playlist.
 | AI Mini Project | Build an application using LLMs | Python, LLM API | `week1/` | ✅ |
 | Personal Portfolio AI | AI chat assistant on my portfolio that answers recruiter questions about my skills | Python, LLM API | `week2/ai-portfolio/` | ✅ |
 | RAG Application | Question-answering system over documents | Python, Embeddings, Qdrant | `week2/` | ✅ |
-| DSA Playlist RAG | Search and ask questions about DSA learning content | RAG, Qdrant | `week2/` | ✅ |
 | LangGraph Basics | Doubling graph with state, nodes, edges and conditional edges | LangGraph | `week3/` | ✅ |
 | Restaurant AI Agent | LLM handles each step: take order, confirm, cook, serve | LangGraph | `week4/restraunt-ai-agent/` | ✅ |
 | Multi-Agent System | Multiple LLM agents (supervisor + workers) collaborating | Python, LangGraph | `week5/multiagent/` | ✅ |
